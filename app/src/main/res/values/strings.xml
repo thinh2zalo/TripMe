@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TripMe</string>
+    <string name="search_hint">Tìm điểm đến</string>
+</resources>
