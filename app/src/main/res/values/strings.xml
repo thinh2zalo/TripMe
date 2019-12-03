@@ -11,7 +11,10 @@
     <string name="my_schedule">Lịch trình</string>
     <string name="save">Cứu hộ</string>
     <string name="notification">Thông báo</string>
-    <string name="other">Other</string>
+    <string name="other">Khác</string>
     <string name="address">Địa điểm</string>
     <string name="place">Địa Điểm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

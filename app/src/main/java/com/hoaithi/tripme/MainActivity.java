@@ -1,38 +1,33 @@
 package com.hoaithi.tripme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.view.MenuItem;
 import android.view.View;
 
-import com.hoaithi.tripme.model.Place;
-import com.hoaithi.tripme.util.Util;
-
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.hoaithi.tripme.discovertab.BottomPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.nearby_recycler_view)
-    RecyclerView mNearbyRecyclerView;
+    @BindView(R.id.view_pager)
+    ViewPager mBottomPager;
 
-    @BindView(R.id.popular_recycler_view)
-    RecyclerView mPopularRecyclerView;
+    @BindView(R.id.bottom_navigation_view)
+    BottomNavigationView mBottomNavigationView;
 
-    private PlaceAdapter mNearbyAdapter;
-    private PlaceAdapter mPopularAdapter;
-
-    @OnClick(R.id.make_plan)
-    void addNewPlan() {
-        startActivity(new Intent(this,AddNewPlanActivity.class));
-    }
+    BottomPagerAdapter mBottomAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,42 +39,72 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        // add status bar space
-        mStatusBar.getLayoutParams().height = Util.getStatusHeight(getResources());
-        mStatusBar.requestLayout();
 
-        mNearbyAdapter = new PlaceAdapter(this);
-        mPopularAdapter = new PlaceAdapter(this);
+        vibrator  = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
-        mNearbyRecyclerView.setAdapter(mNearbyAdapter);
-        mNearbyRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mBottomAdapter = new BottomPagerAdapter(this, getSupportFragmentManager());
+        mBottomPager.setAdapter(mBottomAdapter);
+        mBottomPager.setOffscreenPageLimit(5);
+        mBottomPager.addOnPageChangeListener(this);
 
-        mPopularRecyclerView.setAdapter(mPopularAdapter);
-        mPopularRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        refreshData();
     }
 
-    public void refreshData() {
-        ArrayList<Place> list1 = new ArrayList<>();
-        list1.add(new Place(R.drawable.hand,"Cầu Vàng","Đà Nẵng"));
-        list1.add(new Place(R.drawable.kien_giang,"Du Lịch Kiên Giang","Kiên Giang"));
-        list1.add(new Place(R.drawable.hand,"Cầu Vàng","Đà Nẵng"));
-        list1.add(new Place(R.drawable.kien_giang,"Du Lịch Kiên Giang","Kiên Giang"));
-        list1.add(new Place(R.drawable.hand,"Cầu Vàng","Đà Nẵng"));
-
-
-        ArrayList<Place> list2 = new ArrayList<>();
-        list2.add(new Place(R.drawable.lotus_pond,"Lotus Pond","Kaohsiung"));
-        list2.add(new Place(R.drawable.suwon,"Du lịch Suwon","Suwon, Hàn Quốc"));
-        list2.add(new Place(R.drawable.lotus_pond,"Lotus Pond","Kaohsiung"));
-        list2.add(new Place(R.drawable.suwon,"Du lịch Suwon","Suwon, Hàn Quốc"));
-        list2.add(new Place(R.drawable.lotus_pond,"Lotus Pond","Kaohsiung"));
-
-        mNearbyAdapter.setData(list1);
-        mPopularAdapter.setData(list2);
+    Vibrator vibrator;
+    private void vibrate() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(25, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            vibrator.vibrate(25);
+        }
     }
 
-    @BindView(R.id.status_bar)
-    View mStatusBar;
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        if(position==0) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR /*| View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR*/);
+            getWindow().setNavigationBarColor(Color.WHITE);
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            getWindow().setNavigationBarColor(Color.WHITE);
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.khampha_nav:
+                vibrate();
+                mBottomPager.setCurrentItem(0);
+                return true;
+            case R.id.lichtrinh_nav:
+                vibrate();
+                mBottomPager.setCurrentItem(1);
+                return true;
+            case R.id.cuuho_nav:
+                vibrate();
+                mBottomPager.setCurrentItem(2);
+                return true;
+            case R.id.thongbao_nav:
+                vibrate();
+                mBottomPager.setCurrentItem(3);
+                return true;
+            case R.id.khac_nav:
+                vibrate();
+                mBottomPager.setCurrentItem(4);
+                return true;
+        }
+        return false;
+    }
 }

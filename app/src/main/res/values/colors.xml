@@ -4,7 +4,7 @@
     <color name= "SurfaceColor">#FFCC00</color>
     <color name="BackwardColorHeavy">#B0000000</color>
     <color name="backward_color">#DD000000</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#FFAB40</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name = "Gray">#22000000</color>
@@ -44,5 +44,7 @@
     <color name="DarkerColorL3">#161218</color>
     <color name="GradientRed">#ff1361</color>
     <color name="DribbleBlue">#3C245C</color>
+    <color name="TabTextColor">#D9BB75</color>
+    <color name="TabSelectedColor">#FFAB40</color>
     <color name="yellow_app_color">#FFD991</color>
 </resources>
