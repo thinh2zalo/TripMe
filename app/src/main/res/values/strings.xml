@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">TripMe</string>
     <string name="search_hint">Tìm điểm đến</string>
+    <string name="schedule">Lịch trình</string>
+    <string name="hotel">Khách sạn</string>
+    <string name="weather">Weather</string>
+    <string name="make_plan">Lên Lịch Trình</string>
+    <string name="section_nearby">Các địa điểm gần bạn</string>
+    <string name="all">Tất cả</string>
+    <string name="decovery">Khám phá</string>
+    <string name="my_schedule">Lịch trình</string>
+    <string name="save">Cứu hộ</string>
+    <string name="notification">Thông báo</string>
+    <string name="other">Other</string>
+    <string name="address">Địa điểm</string>
+    <string name="place">Địa Điểm</string>
 </resources>
