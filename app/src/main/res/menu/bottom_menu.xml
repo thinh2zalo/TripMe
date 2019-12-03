@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/khampha_nav"
+        android:title="@string/decovery"
+        android:icon="@drawable/ic_search_black_24dp"
+        />
+
+    <item android:id="@+id/lichtrinh_nav"
+        android:title="@string/my_schedule"
+        android:icon="@drawable/ic_work_black_24dp"
+        />
+
+    <item android:id="@+id/cuuho_nav"
+        android:title="@string/save"
+        android:icon="@drawable/ic_error_outline_black_24dp"
+        />
+
+    <item android:id="@+id/thongbao_nav"
+        android:title="@string/notification"
+        android:icon="@drawable/ic_notifications_none_black_24dp"
+        />
+
+    <item android:id="@+id/khac_nav"
+        android:title="@string/other"
+        android:icon="@drawable/ic_more_horiz_black_24dp"
+        />
+
+</menu>
+

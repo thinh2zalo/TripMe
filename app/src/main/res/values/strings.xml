@@ -1,8 +1,27 @@
 <resources>
     <string name="app_name">TripMe</string>
     <string name="search_hint">Tìm điểm đến</string>
+<<<<<<< HEAD
     <string name="title_activity_my_plan">MyPlan</string>
     <string name="title_activity_plan">Plan</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+=======
+    <string name="schedule">Lịch trình</string>
+    <string name="hotel">Khách sạn</string>
+    <string name="weather">Weather</string>
+    <string name="make_plan">Lên Lịch Trình</string>
+    <string name="section_nearby">Các địa điểm gần bạn</string>
+    <string name="all">Tất cả</string>
+    <string name="decovery">Khám phá</string>
+    <string name="my_schedule">Lịch trình</string>
+    <string name="save">Cứu hộ</string>
+    <string name="notification">Thông báo</string>
+    <string name="other">Khác</string>
+    <string name="address">Địa điểm</string>
+    <string name="place">Địa Điểm</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+>>>>>>> b1f34a2305a82bebb19bc5272b582e90eed1f2b0
 </resources>

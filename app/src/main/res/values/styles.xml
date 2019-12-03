@@ -4,7 +4,7 @@
         <item name="colorPrimaryDark">@color/FlatWhite</item>
         <item name="colorPrimary">@color/FlatWhite</item>
         <item name="colorAccent">@color/FlatYellow</item>
-        <item name="colorControlHighlight">@color/ExpoBlack</item>
+        <item name="colorControlHighlight">#11000000</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/white</item>
         <item name="android:windowBackground">@android:color/white</item>
