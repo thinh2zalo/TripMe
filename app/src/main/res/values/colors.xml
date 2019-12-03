@@ -46,4 +46,5 @@
     <color name="DribbleBlue">#3C245C</color>
     <color name="TabTextColor">#D9BB75</color>
     <color name="TabSelectedColor">#FFAB40</color>
+    <color name="yellow_app_color">#FFD991</color>
 </resources>

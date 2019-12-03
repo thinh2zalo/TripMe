@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <FrameLayout
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/divider_bottom"
+        android:id="@+id/view_pager"
+        android:overScrollMode="never"/>
+    <View
+        android:id="@+id/divider_bottom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bn_menu"
-        android:id="@+id/frame"
-        >
-    </FrameLayout>
-
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
+        android:background="#22555555"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bn_menu"
-        android:layout_width="match_parent"
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="bottom"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/bottom_navigation_icon_color"
+        app:labelVisibilityMode="labeled"
+        app:itemTextColor="@color/bottom_navigation_icon_color"
         app:menu="@menu/bottom_menu"
-        android:background="?android:attr/windowBackground"
-        android:foreground="?attr/selectableItemBackground"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
-        android:layout_alignParentBottom="true"
-        ></com.google.android.material.bottomnavigation.BottomNavigationView>
-
-</RelativeLayout>
+        app:elevation="6dp"
+        android:background="@color/FlatWhite"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
