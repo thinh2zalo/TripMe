@@ -2,7 +2,6 @@ package com.hoaithi.tripme;
 
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,15 +27,15 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DecoveryFragment extends Fragment {
+public class DiscoveryFragment extends Fragment {
 
 
-    public DecoveryFragment() {
+    public DiscoveryFragment() {
         // Required empty public constructor
     }
 
     public static Fragment newInstance() {
-        return new DecoveryFragment();
+        return new DiscoveryFragment();
     }
 
 

@@ -17,15 +17,15 @@ import com.google.android.material.tabs.TabLayout;
 public class TripsFragment extends Fragment {
 
     View mRootView;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         mRootView = inflater.inflate(R.layout.fragment_trips, container, false);
         initView();
         return mRootView;
     }
-
 
     void initView()
     {

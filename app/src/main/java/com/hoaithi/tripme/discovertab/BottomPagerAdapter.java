@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.hoaithi.tripme.DecoveryFragment;
+import com.hoaithi.tripme.DiscoveryFragment;
 import com.hoaithi.tripme.R;
 import com.hoaithi.tripme.TripsFragment;
 
@@ -25,11 +25,11 @@ public class BottomPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> mData = new ArrayList<>();
 
     private void initData() {
-        mData.add(DecoveryFragment.newInstance());
+        mData.add(DiscoveryFragment.newInstance());
         mData.add(new TripsFragment());
-        mData.add(DecoveryFragment.newInstance());
-        mData.add(DecoveryFragment.newInstance());
-        mData.add(DecoveryFragment.newInstance());
+        mData.add(DiscoveryFragment.newInstance());
+        mData.add(DiscoveryFragment.newInstance());
+        mData.add(DiscoveryFragment.newInstance());
     }
 
     // Returns total number of pages
