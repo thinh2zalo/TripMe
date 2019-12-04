@@ -56,6 +56,11 @@ public class DecoveryFragment extends Fragment {
     private PlaceAdapter mNearbyAdapter;
     private PlaceAdapter mPopularAdapter;
 
+    @OnClick(R.id.schedule_icon)
+    void goToMyPlan() {
+        startActivity(new Intent(getContext(),MyPlanActivity.class));
+    }
+
     @OnClick(R.id.make_plan)
     void addNewPlan() {
         startActivity(new Intent(getContext(), AddNewPlanActivity.class));
