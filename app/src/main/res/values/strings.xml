@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">TripMe</string>
     <string name="search_hint">Tìm điểm đến</string>
-<<<<<<< HEAD
     <string name="title_activity_my_plan">MyPlan</string>
     <string name="title_activity_plan">Plan</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-=======
     <string name="schedule">Lịch trình</string>
     <string name="hotel">Khách sạn</string>
     <string name="weather">Weather</string>
