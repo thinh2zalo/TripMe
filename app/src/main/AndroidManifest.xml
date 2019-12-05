@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".AddNewPlanActivity" />
         <activity android:name=".AddCost" />
-        <activity android:name=".MyPlanActivity" />
+        <activity android:name=".yourplan.YourPlanActivity" />
     </application>
 
 </manifest>

@@ -2,7 +2,6 @@ package com.hoaithi.tripme;
 
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.hoaithi.tripme.model.Place;
 import com.hoaithi.tripme.util.Util;
+import com.hoaithi.tripme.yourplan.YourPlanActivity;
 
 import java.util.ArrayList;
 
@@ -58,7 +58,7 @@ public class DecoveryFragment extends Fragment {
 
     @OnClick(R.id.schedule_icon)
     void goToMyPlan() {
-        startActivity(new Intent(getContext(),MyPlanActivity.class));
+        startActivity(new Intent(getContext(), YourPlanActivity.class));
     }
 
     @OnClick(R.id.make_plan)
