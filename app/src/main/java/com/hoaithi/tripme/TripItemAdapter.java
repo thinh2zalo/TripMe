@@ -66,6 +66,7 @@ public class TripItemAdapter extends RecyclerView.Adapter<TripItemAdapter.TripIt
         return new TripItemViewHolder(itemView);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull TripItemViewHolder holder, int position) {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");

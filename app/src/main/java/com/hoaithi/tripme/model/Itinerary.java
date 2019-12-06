@@ -1,8 +1,11 @@
 package com.hoaithi.tripme.model;
 
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Itinerary {
+public class Itinerary implements Serializable {
     public String mName;
     public Date mTimeStart;
     public Date mTimeEnd;
@@ -18,5 +21,20 @@ public class Itinerary {
         this.mNumberAttendees = people;
         this.mIsPublic = isPublic;
         this.mDestination = Destination;
+    }
+
+    public Itinerary(Itinerary newItem) {
+        this.mName = newItem.mName;
+        this.mTimeStart = newItem.mTimeStart;
+        this.mTimeEnd = newItem.mTimeEnd;
+        this.mNumberAttendees = newItem.mNumberAttendees;
+        this.mIsPublic = newItem.mIsPublic;
+        this.mDestination = newItem.mDestination;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.mName + " " + this.mTimeStart.toString();
     }
 }

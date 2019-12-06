@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hoaithi.tripme.model.Data;
+import com.hoaithi.tripme.model.Itinerary;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,10 +43,10 @@ public class OngoingTripsFragment extends Fragment {
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_ongoing_trips, container, false);
         unbinder = ButterKnife.bind(this, mView);
-
         initView();
         return mView;
     }
+
 
 
     public void initView()
@@ -53,9 +54,11 @@ public class OngoingTripsFragment extends Fragment {
 
         tripItemAdapter = new TripItemAdapter(this.getContext(), Data.trips);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        tripsRecyclerView.setHasFixedSize(true);
         tripsRecyclerView.setLayoutManager(layoutManager);
         tripsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         tripsRecyclerView.setAdapter(tripItemAdapter);
+        Data.tripItemAdapter = tripItemAdapter;
     }
 
     @Override
