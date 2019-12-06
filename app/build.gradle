@@ -55,7 +55,8 @@ dependencies {
     // Support Library
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 
     // Design
@@ -73,4 +74,10 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation "com.github.bumptech.glide:okhttp3-integration:4.9.0"
 
+    // Scrollable Number Picker
+    implementation 'com.github.travijuu:numberpicker:1.0.7'
+
+    // Circle Image View
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }
+

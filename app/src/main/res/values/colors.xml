@@ -47,4 +47,5 @@
     <color name="TabTextColor">#D9BB75</color>
     <color name="TabSelectedColor">#FFAB40</color>
     <color name="yellow_app_color">#FFD991</color>
+    <color name="bg_trips">#C4C4C4</color>
 </resources>

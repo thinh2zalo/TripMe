@@ -15,6 +15,12 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.hoaithi.tripme.discovertab.BottomPagerAdapter;
+import com.hoaithi.tripme.model.Data;
+import com.hoaithi.tripme.model.Itinerary;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +55,19 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
 
+        try {
+            dataInit();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void dataInit() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Itinerary sample = new Itinerary("Sample Trip", sdf.parse("01/12/2019"),
+                sdf.parse("05/12/2019"), 3, false, "Đà Lạt");
+        Data.addNewTrip(sample);
     }
 
     Vibrator vibrator;
