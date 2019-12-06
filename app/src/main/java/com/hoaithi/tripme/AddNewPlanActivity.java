@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -40,7 +41,7 @@ public class AddNewPlanActivity extends AppCompatActivity {
     EditText tenchuyendiEditText;
 
     @BindView(R.id.diemden_edit_text)
-    EditText diemdenEditText;
+    AutoCompleteTextView diemdenEditText;
 
     @BindView(R.id.khoihanh_edit_text)
     EditText khoihanhEditText;
@@ -231,5 +232,7 @@ public class AddNewPlanActivity extends AppCompatActivity {
         soluongNumberPicker.setMin(1);
         soluongNumberPicker.setMax(20);
         soluongNumberPicker.setValue(1);
+
+        diemdenEditText.setAdapter(new PlaceAutoSuggestAdapter(AddNewPlanActivity.this, android.R.layout.simple_list_item_1));
     }
 }

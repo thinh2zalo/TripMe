@@ -134,17 +134,13 @@
                     android:paddingTop="15dp"
                     />
 
-                <EditText
+                <AutoCompleteTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/diemden_edit_text"
                     android:text=""
                     android:textSize="18dp"
                     android:padding="15dp"
-                    android:clickable="true"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:imeOptions="actionNext"
                     />
             </LinearLayout>
         </LinearLayout>
