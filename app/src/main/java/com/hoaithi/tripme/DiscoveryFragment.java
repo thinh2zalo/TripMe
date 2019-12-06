@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.hoaithi.tripme.model.Place;
 import com.hoaithi.tripme.util.Util;
+import com.hoaithi.tripme.yourplan.YourPlanActivity;
 
 import java.util.ArrayList;
 
@@ -54,6 +55,11 @@ public class DiscoveryFragment extends Fragment {
 
     private PlaceAdapter mNearbyAdapter;
     private PlaceAdapter mPopularAdapter;
+
+    @OnClick(R.id.schedule_icon)
+    void goToMyPlan() {
+        startActivity(new Intent(getContext(), YourPlanActivity.class));
+    }
 
     @OnClick(R.id.make_plan)
     void addNewPlan() {
