@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.hoaithi.tripme.AddCost;
 import com.hoaithi.tripme.AddNewPlanActivity;
 import com.hoaithi.tripme.R;
+import com.hoaithi.tripme.SearchPlaceActivity;
 import com.hoaithi.tripme.util.Util;
 
 import butterknife.BindView;
@@ -59,10 +60,8 @@ public class YourPlanActivity extends AppCompatActivity {
     @OnClick(R.id.floating_add_button)
     void addNewPlan() {
         if(mViewPager.getCurrentItem() ==0)
-            startActivity(new Intent(this, AddNewPlanActivity.class));
+            startActivity(new Intent(this, SearchPlaceActivity.class));
         else
             startActivity(new Intent(this, AddCost.class));
-
-
     }
 }

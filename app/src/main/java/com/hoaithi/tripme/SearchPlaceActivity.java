@@ -34,7 +34,7 @@ public class SearchPlaceActivity extends AppCompatActivity {
 
     AttractionItemAdapter attractionItemAdapter;
     List<Attraction> attractionList = new ArrayList<>();
-    PlaceApi placeApi = new PlaceApi();
+    PlaceApi placeApi;
 
     @OnClick(R.id.back_button)
     void back() {
@@ -73,4 +73,5 @@ public class SearchPlaceActivity extends AppCompatActivity {
         attractionRecyclerView.setItemAnimator(new DefaultItemAnimator());
         attractionRecyclerView.setAdapter(attractionItemAdapter);
     }
+
 }

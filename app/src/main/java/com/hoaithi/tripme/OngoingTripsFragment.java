@@ -30,7 +30,7 @@ public class OngoingTripsFragment extends Fragment {
 
     @BindView(R.id.trip_list_recycler_view)
     RecyclerView tripsRecyclerView;
-
+    
     TripItemAdapter tripItemAdapter;
 
     public OngoingTripsFragment() {
@@ -59,6 +59,7 @@ public class OngoingTripsFragment extends Fragment {
         tripsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         tripsRecyclerView.setAdapter(tripItemAdapter);
         Data.tripItemAdapter = tripItemAdapter;
+
     }
 
     @Override
