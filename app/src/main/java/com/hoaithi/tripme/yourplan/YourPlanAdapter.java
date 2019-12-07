@@ -77,8 +77,8 @@ public class YourPlanAdapter extends RecyclerView.Adapter<YourPlanAdapter.ItemHo
                 return new CostSectionHolder(v);
             case R.layout.item_plan_cost_detail:
                 return new ItemCostDetailHolder(v);
-            case R.layout.item_go_back:
-                return new BackSectionHolder(v);
+//            case R.layout.item_go_back:
+//                return new BackSectionHolder(v);
             default:
                 return new DateSectionHolder(v);
         }
@@ -104,8 +104,8 @@ public class YourPlanAdapter extends RecyclerView.Adapter<YourPlanAdapter.ItemHo
             return R.layout.item_plan_cost_section;
         else if(object instanceof ItemCostDetail)
             return R.layout.item_plan_cost_detail;
-        else if(object instanceof BackSection)
-            return R.layout.item_go_back;
+//        else if(object instanceof BackSection)
+//            return R.layout.item_go_back;
         else
         return R.layout.item_plan_date_section;
     }
@@ -127,7 +127,7 @@ public class YourPlanAdapter extends RecyclerView.Adapter<YourPlanAdapter.ItemHo
     }
 
     public class ChartSectionHolder extends ItemHolder<ChartSection> {
-        @OnClick({R.id.detail_button,R.id.detail_icon})
+//        @OnClick({R.id.detail_button,R.id.detail_icon})
         void onClick() {
             if(mListener!=null) mListener.onPlanObjectClicked(mData.get(getAdapterPosition()),getAdapterPosition());
         }

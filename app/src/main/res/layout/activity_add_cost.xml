@@ -56,11 +56,11 @@
         android:text="Nội dung"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/noidung"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/noidung"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -75,9 +75,10 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/content_tiet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Thu tiền đợt 1" />
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -89,11 +90,11 @@
         android:text="Địa điểm"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/noidung" />
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
+        android:id="@+id/diadiem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -109,7 +110,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bếm xe miền " />
+            android:id="@+id/address_tiet"
+
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -123,8 +126,8 @@
         android:text="Chọn từ bản đồ"
         android:textColor="#E0923A"
         android:textColorHint="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+        app:layout_constraintEnd_toEndOf="@+id/diadiem"
+        app:layout_constraintTop_toBottomOf="@+id/diadiem">
 
     </Button>
 
@@ -135,7 +138,7 @@
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/diadiem"
         app:srcCompat="@drawable/map" />
 
     <TextView
@@ -144,13 +147,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="45dp"
-        android:text="Cập nhật chi phi"
+        android:text="Cập nhật chi phí"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/diadiem" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout3"
+        android:id="@+id/capnhatchiphi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -167,7 +170,7 @@
             >
 
             <ToggleButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/congtruchiphi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00FFFFFF"
@@ -180,7 +183,10 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="150000" />
+                android:inputType="numberDecimal"
+                android:id="@+id/cost_tiet"
+
+                />
 
         </LinearLayout>
 
@@ -196,10 +202,10 @@
         android:text="Ghi chú"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/capnhatchiphi" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/ghichu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -214,11 +220,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/note_tiet"
+
             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -227,10 +235,10 @@
         android:textColor="#FFFFFF"
         android:background="@drawable/button_bg_ok"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/ghichu" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -239,7 +247,7 @@
         android:textColor="#E0923A"
         android:background="@drawable/button_bg_cancel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/ghichu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

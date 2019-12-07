@@ -20,7 +20,9 @@ import com.hoaithi.tripme.model.yourplan.PlanObject;
 import java.util.ArrayList;
 
 public class YourCostFragment extends Fragment implements YourPlanAdapter.OnPlanObjectClickListener {
-    private YourPlanAdapter mAdapter;
+    private static YourPlanAdapter mAdapter;
+    public static ArrayList<PlanObject> list = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -38,10 +40,9 @@ public class YourCostFragment extends Fragment implements YourPlanAdapter.OnPlan
         refreshData(false);
     }
 
-    private boolean mDetailShowing = false;
+    private static boolean mDetailShowing = false;
 
-    private void refreshData(boolean detail) {
-        ArrayList<PlanObject> list = new ArrayList<>();
+    public static void refreshData(boolean detail) {
         mDetailShowing = detail;
         if(!detail) {
             list.add(new ChartSection());
@@ -51,14 +52,14 @@ public class YourCostFragment extends Fragment implements YourPlanAdapter.OnPlan
             list.add(new CostSection(CostSection.COLOR_BLUE,"Thu", "1.500.000 đ"));
             list.add(new CostSection(CostSection.COLOR_RED,"Chi", "250.000 đ"));
         } else {
-            list.add(new CostSection(CostSection.COLOR_ORANGE,"Dự kiến", "1.500.000 đ"));
-            list.add(new CostSection(CostSection.COLOR_GREEN,"Hiện có", "1.250.000 đ"));
-            list.add(new CostSection(CostSection.COLOR_BLUE,"Thu", "1.500.000 đ"));
-            list.add(new CostSection(CostSection.COLOR_RED,"Chi", "250.000 đ"));
-            list.add(new ItemCostDetail(ItemCostDetail.TYPE_ADD,"Thu tiền đợt 1","tại Bến xe miền Đông","1.500.000 đ"));
-            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Ăn sáng","tại Bến xe miền Đông","100.000 đ"));
-            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Vé vào cổng","tại Thung lũng tình yêu","150.000 đ"));
-            list.add(new BackSection());
+//            list.add(new CostSection(CostSection.COLOR_ORANGE,"Dự kiến", "1.500.000 đ"));
+//            list.add(new CostSection(CostSection.COLOR_GREEN,"Hiện có", "1.250.000 đ"));
+//            list.add(new CostSection(CostSection.COLOR_BLUE,"Thu", "1.500.000 đ"));
+//            list.add(new CostSection(CostSection.COLOR_RED,"Chi", "250.000 đ"));
+//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_ADD,"Thu tiền đợt 1","tại Bến xe miền Đông","1.500.000 đ"));
+//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Ăn sáng","tại Bến xe miền Đông","100.000 đ"));
+//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Vé vào cổng","tại Thung lũng tình yêu","150.000 đ"));
+//            list.add(new BackSection());
         }
         mAdapter.setData(list);
 

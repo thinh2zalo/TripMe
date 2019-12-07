@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputEditText;
+import com.hoaithi.tripme.AddCost;
 import com.hoaithi.tripme.AddNewPlanActivity;
 import com.hoaithi.tripme.R;
 import com.hoaithi.tripme.util.Util;
@@ -27,6 +29,8 @@ public class YourPlanActivity extends AppCompatActivity {
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
 
+
+
     YourPlanPagerAdapter mPagerAdapter;
 
     @Override
@@ -43,6 +47,7 @@ public class YourPlanActivity extends AppCompatActivity {
 
         mPagerAdapter = new YourPlanPagerAdapter(getSupportFragmentManager(),YourPlanPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter(mPagerAdapter);
+
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
@@ -53,6 +58,11 @@ public class YourPlanActivity extends AppCompatActivity {
 
     @OnClick(R.id.floating_add_button)
     void addNewPlan() {
-        startActivity(new Intent(this, AddNewPlanActivity.class));
+        if(mViewPager.getCurrentItem() ==0)
+            startActivity(new Intent(this, AddNewPlanActivity.class));
+        else
+            startActivity(new Intent(this, AddCost.class));
+
+
     }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class YourPlanPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Fragment> mData = new ArrayList<>();
+    public static Integer position;
 
     public YourPlanPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -24,6 +25,7 @@ public class YourPlanPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+        System.out.println("page "+position);
         return mData.get(position);
     }
 
@@ -37,10 +39,13 @@ public class YourPlanPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
+                this.position = 0;
                 return "Lịch trình";
             case 1:
+                this.position = 1;
                 return "Chi phí";
             default:
+                this.position = 0;
                 return "";
         }
     }
