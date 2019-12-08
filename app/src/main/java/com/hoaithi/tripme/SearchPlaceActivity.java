@@ -67,6 +67,10 @@ public class SearchPlaceActivity extends AppCompatActivity  {
     }
 
     private void initView() {
+
+        if (getIntent().getStringExtra("city") != null)
+            cityTextView.setText(getIntent().getStringExtra("city"));
+
         Log.d("Nunu", Integer.toString(attractionList.size()));
         attractionItemAdapter = new AttractionItemAdapter(this, attractionList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -86,6 +90,7 @@ public class SearchPlaceActivity extends AppCompatActivity  {
         {
             sb=new StringBuilder("https://maps.googleapis.com/maps/api/place/textsearch/json?");
             sb.append("query="+city.replaceAll("\\s+","")+"+city+point+of+interest&language=vi&key="+ PlaceApi.API_KEY);
+            Log.d("Nunu", sb.toString());
             this.execute(sb.toString());
         }
 
@@ -126,7 +131,6 @@ public class SearchPlaceActivity extends AppCompatActivity  {
             try {
                 JSONObject jsonObject=new JSONObject(result);
                 JSONArray results=jsonObject.getJSONArray("results");
-                Log.d("Nunu", Integer.toString(results.length()));
                 for(int i=0;i< results.length();i++){
                     JSONObject objecti = results.getJSONObject(i);
                     String name = objecti.getString("name");
@@ -142,6 +146,7 @@ public class SearchPlaceActivity extends AppCompatActivity  {
             catch (JSONException e){
                 e.printStackTrace();
             }
+            Log.d("Nunu", Integer.toString(attractionList.size()));
         }
     }
 

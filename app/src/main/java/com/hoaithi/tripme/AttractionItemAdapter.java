@@ -1,6 +1,7 @@
 package com.hoaithi.tripme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,14 @@ public class AttractionItemAdapter extends RecyclerView.Adapter<AttractionItemAd
         holder.nameTextView.setText(attraction.mName);
         holder.addressTextView.setText(attraction.mAddress);
         holder.ratingTextView.setText(attraction.mRating);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, AddNewPlaceActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

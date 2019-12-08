@@ -53,14 +53,15 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         mBottomPager.setOffscreenPageLimit(5);
         mBottomPager.addOnPageChangeListener(this);
 
+        int page = getIntent().getIntExtra("page",0);
+        mBottomPager.setCurrentItem(page);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
-
         try {
             dataInit();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        super.onStart();
     }
 
     public void dataInit() throws ParseException {

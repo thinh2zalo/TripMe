@@ -59,7 +59,6 @@ public class OngoingTripsFragment extends Fragment {
         tripsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         tripsRecyclerView.setAdapter(tripItemAdapter);
         Data.tripItemAdapter = tripItemAdapter;
-
     }
 
     @Override

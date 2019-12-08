@@ -141,6 +141,10 @@
                     android:text=""
                     android:textSize="18dp"
                     android:padding="15dp"
+                    android:clickable="true"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
                     />
             </LinearLayout>
         </LinearLayout>
@@ -186,6 +190,8 @@
                     android:padding="15dp"
                     android:clickable="true"
                     android:editable="false"
+                    android:textIsSelectable="true"
+                    android:inputType=""
                     />
             </LinearLayout>
 

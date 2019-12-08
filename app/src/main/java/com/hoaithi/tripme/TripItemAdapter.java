@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
 
 public class TripItemAdapter extends RecyclerView.Adapter<TripItemAdapter.TripItemViewHolder> {
 
-    public class TripItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class TripItemViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.nametrip_text_view)
         TextView nametripTextView;
@@ -52,11 +52,19 @@ public class TripItemAdapter extends RecyclerView.Adapter<TripItemAdapter.TripIt
             ButterKnife.bind(this, itemView);
         }
 
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(mContext, YourPlanActivity.class);
-            mContext.startActivity(intent);
-        }
+//        @Override
+//        public void onClick(View view) {
+//            Intent intent = new Intent(mContext, YourPlanActivity.class);
+//            if (nametripTextView.getText().toString() != "Sample Trip")
+//            {
+//                intent.putExtra("name_trip", nametripTextView.getText().toString());
+//                intent.putExtra("time", timeTextView.getText().toString());
+//                intent.putExtra("destination", destinationTextView.getText().toString());
+//                intent.putExtra("number_people", attendeeTextView.getText().toString());
+//
+//            }
+//            mContext.startActivity(intent);
+//        }
     }
 
     List<Itinerary> mItineraryList;
@@ -101,6 +109,10 @@ public class TripItemAdapter extends RecyclerView.Adapter<TripItemAdapter.TripIt
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, YourPlanActivity.class);
+                if (position != 0)
+                {
+                    intent.putExtra("trip", mItineraryList.get(position));
+                }
                 mContext.startActivity(intent);
             }
         });
