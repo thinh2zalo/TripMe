@@ -1,6 +1,7 @@
 package com.hoaithi.tripme.yourplan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -46,6 +47,7 @@ public class YourPlanActivity extends AppCompatActivity {
     @BindView(R.id.textView4)
     TextView dateAndPeopleTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +66,10 @@ public class YourPlanActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
 
         getData();
+
     }
+
+
 
     void getData()
     {

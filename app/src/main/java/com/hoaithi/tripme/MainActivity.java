@@ -69,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         Itinerary sample = new Itinerary("Sample Trip", sdf.parse("01/12/2019"),
                 sdf.parse("05/12/2019"), 3, false, "Đà Lạt");
         Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
     }
 
     Vibrator vibrator;

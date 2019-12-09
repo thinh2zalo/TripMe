@@ -1,9 +1,11 @@
 package com.hoaithi.tripme;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.hoaithi.tripme.model.Attraction;
 import com.hoaithi.tripme.model.Place;
 import com.hoaithi.tripme.util.Util;
@@ -40,11 +43,12 @@ public class SearchPlaceActivity extends AppCompatActivity  {
     View mStatusBar;
     @BindView(R.id.city_text_view)
     TextView cityTextView;
+    @BindView(R.id.tl_searchPlace)
+    TabLayout searchPlaceTab;
+    @BindView(R.id.vp_seachPlace)
+    ViewPager searchPlacePager;
 
-    @BindView(R.id.attraction_recycler_view)
-    RecyclerView attractionRecyclerView;
-    AttractionItemAdapter attractionItemAdapter;
-    List<Attraction> attractionList = new ArrayList<>();
+    public static String city;
 
     @OnClick(R.id.back_button)
     void back() {
@@ -68,86 +72,25 @@ public class SearchPlaceActivity extends AppCompatActivity  {
 
     private void initView() {
 
+        createTab();
         if (getIntent().getStringExtra("city") != null)
-            cityTextView.setText(getIntent().getStringExtra("city"));
-
-        Log.d("Nunu", Integer.toString(attractionList.size()));
-        attractionItemAdapter = new AttractionItemAdapter(this, attractionList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        attractionRecyclerView.setHasFixedSize(true);
-        attractionRecyclerView.setLayoutManager(layoutManager);
-        attractionRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        attractionRecyclerView.setAdapter(attractionItemAdapter);
-
-        new getAttractionInCity(cityTextView.getText().toString());
-    }
-
-    private class  getAttractionInCity  extends AsyncTask<String, Integer, String>
-    {
-        StringBuilder sb;
-
-        public getAttractionInCity(String city)
         {
-            sb=new StringBuilder("https://maps.googleapis.com/maps/api/place/textsearch/json?");
-            sb.append("query="+city.replaceAll("\\s+","")+"+city+point+of+interest&language=vi&key="+ PlaceApi.API_KEY);
-            Log.d("Nunu", sb.toString());
-            this.execute(sb.toString());
+            city = getIntent().getStringExtra("city");
+            cityTextView.setText(city);
+        }
+        else
+        {
+            city = cityTextView.getText().toString();
         }
 
-        @Override
-        protected String doInBackground(String... strurl) {
-            HttpURLConnection connection=null;
-
-            StringBuilder jsonResult=new StringBuilder();
-            try{
-                URL url=new URL(strurl[0]);
-                connection=(HttpURLConnection)url.openConnection();
-                InputStreamReader inputStreamReader=new InputStreamReader(connection.getInputStream());
-                int read;
-
-                char[] buff=new char[1024];
-                while ((read=inputStreamReader.read(buff))!=-1){
-                    jsonResult.append(buff,0,read);
-                }
-            }
-            catch (MalformedURLException e){
-                e.printStackTrace();
-                Log.d("Nunu", e.getMessage());
-            }
-            catch (IOException e){
-                e.printStackTrace();
-                Log.d("Nunu", e.getLocalizedMessage());
-            }
-            finally {
-                if(connection!=null){
-                    connection.disconnect();
-                }
-            }
-            return jsonResult.toString();
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            try {
-                JSONObject jsonObject=new JSONObject(result);
-                JSONArray results=jsonObject.getJSONArray("results");
-                for(int i=0;i< results.length();i++){
-                    JSONObject objecti = results.getJSONObject(i);
-                    String name = objecti.getString("name");
-                    String address = objecti.getString("formatted_address");
-                    JSONObject location = objecti.getJSONObject("geometry").getJSONObject("location");
-                    String photo = objecti.getJSONArray("photos").getJSONObject(0).getString("photo_reference");
-                    String rating = objecti.getString("rating");
-                    attractionList.add(new Attraction(name, photo, address, location.getString("lat"), location.getString("lng"),
-                            rating));
-                    attractionItemAdapter.notifyDataSetChanged();
-                }
-            }
-            catch (JSONException e){
-                e.printStackTrace();
-            }
-            Log.d("Nunu", Integer.toString(attractionList.size()));
-        }
     }
+
+    private void createTab() {
+        searchPlacePager.setAdapter(new SearchPlacePagerAdapter(getSupportFragmentManager()));
+        searchPlaceTab.setupWithViewPager(searchPlacePager);
+        searchPlacePager.setCurrentItem(0);
+    }
+
+
 
 }

@@ -1,8 +1,10 @@
 package com.hoaithi.tripme;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hoaithi.tripme.model.Data;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -27,6 +31,16 @@ public class PastTripsFragment extends Fragment {
 
     View mView;
     Unbinder unbinder;
+
+    @OnClick(R.id.floating_add_button)
+    void addTrips()
+    {
+        Intent intent = new Intent(this.getActivity(), AddNewPlanActivity.class);
+        startActivity(intent);
+    }
+
+    @BindView(R.id.floating_add_button)
+    FloatingActionButton addButton;
 
     @BindView(R.id.trip_list_recycler_view)
     RecyclerView tripsRecyclerView;
@@ -58,6 +72,21 @@ public class PastTripsFragment extends Fragment {
         tripsRecyclerView.setLayoutManager(layoutManager);
         tripsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         tripsRecyclerView.setAdapter(tripItemAdapter);
+
+        tripsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                    addButton.show();
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && addButton.isShown())
+                    addButton.hide();
+            }
+        });
     }
 
     @Override

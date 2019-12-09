@@ -1,8 +1,10 @@
 package com.hoaithi.tripme;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,11 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.hoaithi.tripme.model.Data;
 import com.hoaithi.tripme.model.Itinerary;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 
@@ -28,8 +32,18 @@ public class OngoingTripsFragment extends Fragment {
     View mView;
     Unbinder unbinder;
 
+    @BindView(R.id.floating_add_button)
+    FloatingActionButton addButton;
+
     @BindView(R.id.trip_list_recycler_view)
     RecyclerView tripsRecyclerView;
+
+    @OnClick(R.id.floating_add_button)
+    void addTrips()
+    {
+        Intent intent = new Intent(this.getActivity(), AddNewPlanActivity.class);
+        startActivity(intent);
+    }
     
     TripItemAdapter tripItemAdapter;
 
@@ -59,6 +73,21 @@ public class OngoingTripsFragment extends Fragment {
         tripsRecyclerView.setItemAnimator(new DefaultItemAnimator());
         tripsRecyclerView.setAdapter(tripItemAdapter);
         Data.tripItemAdapter = tripItemAdapter;
+
+        tripsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE)
+                    addButton.show();
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0 || dy < 0 && addButton.isShown())
+                    addButton.hide();
+            }
+        });
     }
 
     @Override
