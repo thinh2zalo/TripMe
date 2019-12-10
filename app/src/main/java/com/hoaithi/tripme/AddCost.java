@@ -87,9 +87,10 @@ public class AddCost extends AppCompatActivity {
         String note = note_tiet.getText().toString();
         Integer cost = Integer.parseInt( cost_tiet.getText().toString());
 
-        boolean isAdd = addPlusToggle.getText() == "+";
 
+        boolean isAdd = addPlusToggle.getText().equals( "+");
 
+        System.out.println("toggle "+isAdd+addPlusToggle.getText());
         return new CostItem(content,address,cost,isAdd,note);
     }
 
@@ -105,6 +106,7 @@ public class AddCost extends AppCompatActivity {
         CostItem costItem = null;
         costItem = getNewCost();
 
+//        YourCostFragment.list.clear();
         if(costItem.isAdd )
             YourCostFragment.list.add(new ItemCostDetail(ItemCostDetail.TYPE_ADD,costItem.content,costItem.address,costItem.cost.toString()));
         else
