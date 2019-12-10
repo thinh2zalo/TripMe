@@ -53,20 +53,26 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
         mBottomPager.setOffscreenPageLimit(5);
         mBottomPager.addOnPageChangeListener(this);
 
+        int page = getIntent().getIntExtra("page",0);
+        mBottomPager.setCurrentItem(page);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
-
         try {
             dataInit();
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        super.onStart();
     }
 
     public void dataInit() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Itinerary sample = new Itinerary("Sample Trip", sdf.parse("01/12/2019"),
                 sdf.parse("05/12/2019"), 3, false, "Đà Lạt");
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
+        Data.addNewTrip(sample);
         Data.addNewTrip(sample);
     }
 

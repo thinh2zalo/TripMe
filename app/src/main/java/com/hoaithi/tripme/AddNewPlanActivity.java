@@ -156,7 +156,7 @@ public class AddNewPlanActivity extends AppCompatActivity {
     @OnClick(R.id.xong_button)
     void createNewTrip() {
 
-        if (!validateNameTrip() || !validateStartDate() || !validateEndDate() || !validateValueDate())
+        if (!validateNameTrip() || !validateDestination()|| !validateStartDate() || !validateEndDate() || !validateValueDate())
             return;
 
         Itinerary newItem = null;
@@ -166,6 +166,9 @@ public class AddNewPlanActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Data.addNewTrip(newItem);
+//        Intent intent = new Intent(this, MainActivity.class);
+//        intent.putExtra("page", 1);
+//        startActivity(intent);
         finish();
     }
 
@@ -226,8 +229,9 @@ public class AddNewPlanActivity extends AppCompatActivity {
         mStatusBar.getLayoutParams().height = Util.getStatusHeight(getResources());
         mStatusBar.requestLayout();
 
-        khoihanhEditText.setInputType(InputType.TYPE_NULL);
-        ngayveEditText.setInputType(InputType.TYPE_NULL);
+//        khoihanhEditText.setInputType(InputType.TYPE_NULL);
+//        ngayveEditText.setInputType(InputType.TYPE_NULL);
+        khoihanhEditText.setShowSoftInputOnFocus(false);
 
         soluongNumberPicker.setMin(1);
         soluongNumberPicker.setMax(20);

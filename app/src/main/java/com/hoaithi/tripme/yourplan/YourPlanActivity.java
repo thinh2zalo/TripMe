@@ -1,25 +1,35 @@
 package com.hoaithi.tripme.yourplan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.hoaithi.tripme.AddCost;
 import com.hoaithi.tripme.AddNewPlanActivity;
 import com.hoaithi.tripme.R;
+import com.hoaithi.tripme.SearchPlaceActivity;
+import com.hoaithi.tripme.model.Itinerary;
 import com.hoaithi.tripme.util.Util;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class YourPlanActivity extends AppCompatActivity {
+
+    Itinerary planInfo;
+
     @BindView(R.id.status_bar)
     View mStatusBar;
 
@@ -29,9 +39,14 @@ public class YourPlanActivity extends AppCompatActivity {
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
 
-
-
     YourPlanPagerAdapter mPagerAdapter;
+
+    @BindView(R.id.trip_title)
+    TextView tripNameTextView;
+
+    @BindView(R.id.textView4)
+    TextView dateAndPeopleTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +64,24 @@ public class YourPlanActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter);
 
         mTabLayout.setupWithViewPager(mViewPager);
+
+        getData();
+
+    }
+
+
+
+    void getData()
+    {
+        planInfo = (Itinerary) getIntent().getSerializableExtra("trip");
+        if (planInfo != null)
+        {
+            tripNameTextView.setText(planInfo.mName);
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM");
+            String date = format.format(planInfo.mTimeStart) + " - " + format.format(planInfo.mTimeEnd);
+            int people = planInfo.mNumberAttendees;
+            dateAndPeopleTextView.setText(date + " | " + Integer.toString(people));
+        }
     }
 
     @OnClick(R.id.back_button)
@@ -58,11 +91,13 @@ public class YourPlanActivity extends AppCompatActivity {
 
     @OnClick(R.id.floating_add_button)
     void addNewPlan() {
-        if(mViewPager.getCurrentItem() ==0)
-            startActivity(new Intent(this, AddNewPlanActivity.class));
+        if(mViewPager.getCurrentItem() ==0) {
+            Intent intent = new Intent(this, SearchPlaceActivity.class);
+            if (planInfo != null)
+                intent.putExtra("city", planInfo.mDestination);
+            startActivity(intent);
+        }
         else
             startActivity(new Intent(this, AddCost.class));
-
-
     }
 }

@@ -15,7 +15,7 @@ public class Data {
     public static void addNewTrip(Itinerary newItem)
     {
         trips.add(new Itinerary(newItem));
-        Collections.sort(trips, new Comparator<Itinerary>() {
+        Collections.sort(trips.subList(0, trips.size()), new Comparator<Itinerary>() {
             @Override
             public int compare(Itinerary a, Itinerary b) {
                 return a.mTimeStart.compareTo(b.mTimeStart);

@@ -1,18 +1,27 @@
 package com.hoaithi.tripme;
 
+import android.os.AsyncTask;
+import android.util.Log;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.hoaithi.tripme.model.Attraction;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class PlaceApi {
-
+    static final String API_KEY = "AIzaSyA3gCqHV2M456HOm_35h9MiGSP_7NgPrnE";
     public ArrayList<String> autoComplete(String input){
         ArrayList<String> arrayList=new ArrayList();
         HttpURLConnection connection=null;
@@ -20,7 +29,7 @@ public class PlaceApi {
         try {
             StringBuilder sb=new StringBuilder("https://maps.googleapis.com/maps/api/place/autocomplete/json?");
             sb.append("input="+input);
-            sb.append("&key=AIzaSyA3gCqHV2M456HOm_35h9MiGSP_7NgPrnE");
+            sb.append("&types=geocode&components=country:vn&key="+API_KEY);
             URL url=new URL(sb.toString());
             connection=(HttpURLConnection)url.openConnection();
             InputStreamReader inputStreamReader=new InputStreamReader(connection.getInputStream());
@@ -48,7 +57,13 @@ public class PlaceApi {
             JSONObject jsonObject=new JSONObject(jsonResult.toString());
             JSONArray prediction=jsonObject.getJSONArray("predictions");
             for(int i=0;i<prediction.length();i++){
-                arrayList.add(prediction.getJSONObject(i).getString("description"));
+                JSONObject objecti = prediction.getJSONObject(i);
+                if (objecti.getJSONArray("types").toString().contains("locality"))
+                {
+                    String city = objecti.getJSONObject("structured_formatting").getString("main_text");
+                    arrayList.add(city);
+                }
+
             }
         }
         catch (JSONException e){

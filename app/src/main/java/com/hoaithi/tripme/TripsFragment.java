@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -25,20 +27,10 @@ import butterknife.Unbinder;
 
 public class TripsFragment extends Fragment {
 
-    final int ADD_TRIP_CODE = 1;
 
     View mRootView;
     Unbinder unbinder;
 
-    @BindView(R.id.floating_add_button)
-    FloatingActionButton addButton;
-
-    @OnClick(R.id.floating_add_button)
-    void addTrips()
-    {
-        Intent intent = new Intent(this.getActivity(), AddNewPlanActivity.class);
-        startActivityForResult(intent, ADD_TRIP_CODE);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +48,7 @@ public class TripsFragment extends Fragment {
         vpTrips.setAdapter(new TabTripsAdapter(getFragmentManager()));
         tlTrips.setupWithViewPager(vpTrips);
         vpTrips.setCurrentItem(0);
+
     }
 
 
