@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="10dp"
-        android:text="Du lịch Đà Lạt"
+        android:text="Sample Trip"
         android:textSize="32sp"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"

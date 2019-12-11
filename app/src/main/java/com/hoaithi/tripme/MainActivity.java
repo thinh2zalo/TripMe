@@ -66,13 +66,8 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     public void dataInit() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Itinerary sample = new Itinerary("Sample Trip", sdf.parse("01/12/2019"),
-                sdf.parse("05/12/2019"), 3, false, "Đà Lạt");
-        Data.addNewTrip(sample);
-        Data.addNewTrip(sample);
-        Data.addNewTrip(sample);
-        Data.addNewTrip(sample);
-        Data.addNewTrip(sample);
+        Itinerary sample = new Itinerary("Sample Trip", sdf.parse("20/12/2019"),
+                sdf.parse("23/12/2019"), 3, false, "Đà Lạt");
         Data.addNewTrip(sample);
     }
 
