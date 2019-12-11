@@ -42,24 +42,16 @@ public class YourCostFragment extends Fragment implements YourPlanAdapter.OnPlan
 
     private static boolean mDetailShowing = false;
 
-    public static void refreshData(boolean detail) {
-        mDetailShowing = detail;
-        if(!detail) {
+    public static void refreshData(boolean detal) {
+        System.out.println("size "+list.size());
+        if(list.size()==0) {
+
             list.add(new ChartSection());
 
             list.add(new CostSection(CostSection.COLOR_ORANGE,"Dự kiến", "1.500.000 đ"));
             list.add(new CostSection(CostSection.COLOR_GREEN,"Hiện có", "1.250.000 đ"));
             list.add(new CostSection(CostSection.COLOR_BLUE,"Thu", "1.500.000 đ"));
             list.add(new CostSection(CostSection.COLOR_RED,"Chi", "250.000 đ"));
-        } else {
-//            list.add(new CostSection(CostSection.COLOR_ORANGE,"Dự kiến", "1.500.000 đ"));
-//            list.add(new CostSection(CostSection.COLOR_GREEN,"Hiện có", "1.250.000 đ"));
-//            list.add(new CostSection(CostSection.COLOR_BLUE,"Thu", "1.500.000 đ"));
-//            list.add(new CostSection(CostSection.COLOR_RED,"Chi", "250.000 đ"));
-//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_ADD,"Thu tiền đợt 1","tại Bến xe miền Đông","1.500.000 đ"));
-//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Ăn sáng","tại Bến xe miền Đông","100.000 đ"));
-//            list.add(new ItemCostDetail(ItemCostDetail.TYPE_REMOVE,"Vé vào cổng","tại Thung lũng tình yêu","150.000 đ"));
-//            list.add(new BackSection());
         }
         mAdapter.setData(list);
 
@@ -68,7 +60,7 @@ public class YourCostFragment extends Fragment implements YourPlanAdapter.OnPlan
     @Override
     public void onPlanObjectClicked(PlanObject object, int postion) {
         if(object instanceof ChartSection &&!mDetailShowing)
-            refreshData(true);
+            refreshData(false);
         else if(object instanceof BackSection  && mDetailShowing)
             refreshData(false);
     }
